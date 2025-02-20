@@ -16,7 +16,7 @@ public class Bot {
         HttpRequest request = HttpRequest.newBuilder()
             .uri(URI.create(webhookUrl))
             .header("Content-Type", "application/json")
-            .POST(HttpRequest.BodyPublishers.ofString("{\"text\":\"테스트 메시지\"}")) 
+            .POST(HttpRequest.BodyPublishers.ofString("{\"text\":\"야구를 알려줄게나낭\"}")) 
             .build();
         
         try {
