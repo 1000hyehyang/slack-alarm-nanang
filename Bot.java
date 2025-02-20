@@ -18,16 +18,23 @@ public class Bot {
                     "color": "#3AA3E3",
                     "attachment_type": "default",
                     "actions": [
-                        { "name": "team", "text": "기아 타이거즈", "type": "button", "value": "기아 타이거즈" },
-                        { "name": "team", "text": "삼성 라이온즈", "type": "button", "value": "삼성 라이온즈" },
-                        { "name": "team", "text": "LG 트윈스", "type": "button", "value": "LG 트윈스" },
-                        { "name": "team", "text": "두산 베어스", "type": "button", "value": "두산 베어스" },
-                        { "name": "team", "text": "KT 위즈", "type": "button", "value": "KT 위즈" },
-                        { "name": "team", "text": "SSG 랜더스", "type": "button", "value": "SSG 랜더스" },
-                        { "name": "team", "text": "한화 이글스", "type": "button", "value": "한화 이글스" },
-                        { "name": "team", "text": "롯데 자이언츠", "type": "button", "value": "롯데 자이언츠" },
-                        { "name": "team", "text": "NC 다이노스", "type": "button", "value": "NC 다이노스" },
-                        { "name": "team", "text": "키움 히어로즈", "type": "button", "value": "키움 히어로즈" }
+                        {
+                            "name": "team",
+                            "text": "야구팀 선택하기 ⚾",
+                            "type": "select",
+                            "options": [
+                                { "text": "기아 타이거즈", "value": "기아 타이거즈" },
+                                { "text": "삼성 라이온즈", "value": "삼성 라이온즈" },
+                                { "text": "LG 트윈스", "value": "LG 트윈스" },
+                                { "text": "두산 베어스", "value": "두산 베어스" },
+                                { "text": "KT 위즈", "value": "KT 위즈" },
+                                { "text": "SSG 랜더스", "value": "SSG 랜더스" },
+                                { "text": "한화 이글스", "value": "한화 이글스" },
+                                { "text": "롯데 자이언츠", "value": "롯데 자이언츠" },
+                                { "text": "NC 다이노스", "value": "NC 다이노스" },
+                                { "text": "키움 히어로즈", "value": "키움 히어로즈" }
+                            ]
+                        }
                     ]
                 }
             ]
@@ -50,4 +57,3 @@ public class Bot {
         }
     }
 }
-
