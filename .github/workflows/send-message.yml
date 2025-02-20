@@ -1,7 +1,11 @@
 name: send message
 
 on:
-    workflow_dispatch:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 9 * * *"  # 매일 오전 9시(UTC 기준) 실행
 
 jobs:
   send-message:
