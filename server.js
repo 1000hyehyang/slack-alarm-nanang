@@ -164,35 +164,30 @@ app.post("/slack-interactive", async (req, res) => {
             const aiResponse = await axios.post(
                 GROQ_API_URL,
                 {
-                    model: "llama-3.1-8b-instant",
+                    model: "llama-3.3-70b-versatile",
                     messages: [
                         {
                             role: "system",
-                            content: `당신은 KBO 야구 전문가이며, 사용자가 선택한 팀에 대한 정보를 제공해야 합니다.
-                            그러나 AI가 임의로 사실을 만들어내서는 안 됩니다. 반드시 제공된 데이터만을 사용하여 응답하십시오.
+                            content: `당신은 KBO 야구 전문가이며, 사용자가 선택한 팀에 대한 정보와 당신의 생각, 호불호를 제공해야 합니다. 
+                            반드시 제공된 데이터만을 사용하여 응답하십시오.
                             
                             사용자가 선택한 팀은 "${teamName}"이며, 대표 선수 중 한 명은 "${chosenPlayer.name}"입니다.
                             "${chosenPlayer.name}"의 포지션은 "${chosenPlayer.position}"입니다.
+                            
+                            응답은 반드시 3줄 이내로 작성하고, 모든 문장의 끝에 '나낭'을 덧붙일 것. 접미사 '나낭'을 반드시 붙인다.
+                            "${teamName}"의 2023년 ~ 2024년 최근 경기력과 2025년 전망을 "${chosenPlayer.name}" 선수를 중심으로 설명할 것.
+                            만약 "${chosenPlayer.name}"에 대한 정보가 부족하다면, ${chosenPlayer.name} 선수를 웹검색하거나, 
+                            그래도 부족하면 "${chosenPlayer.name} 선수는 잘 모른다나낭."이라고 답할 것.
+                            한국어와 영어만 사용하며, 중국어나 일본어 등 다른 언어를 절대로 출력하거나 사용하지 않을 것.`
 
-                            🔹 **응답 스타일 가이드**:
-                            - 자연스러운 한국어 대화형 스타일을 유지하십시오.
-                            - 무조건 3줄 이내로 말하십시오. 제발.
-                            - 당신은 무조건 모든 문장이 끝날 때마다 '나낭'이라는 단어를 덧붙이는 말버릇을 가지고 있습니다. 제발.
-                            - 단어 양옆에 '**'을 붙이지 마십시오.
-                            - 절대로 한국어와 영어 외에는 다른 언어를 사용하여 출력하지 마십시오.
-                            - 절대로 중국어를 출력하지마.
-                            - 절대로 일본어를 출력하지마.
-                            - "${teamName}"의 2023년 ~ 2024년 최근 경기력을 말하고, 2025년 전망을 말하십시오. "${chosenPlayer.name}" 선수를 중심으로 설명하십시오.
-                            - 반드시 "${chosenPlayer.name}"의 포지션을 "${chosenPlayer.position}"으로 유지하십시오.
-                            - 만약 "${chosenPlayer.name}"에 대한 정보가 부족하다면, ${chosenPlayer.name} 선수를 웹검색하십시오. 그래도 정보가 정확하지 않다면 "${chosenPlayer.name} 선수는 잘 모른다나낭."라고 정직하게 답하십시오.
-                            `
                         },
                         {
                             role: "user",
-                            content: `"${teamName}" 팀에 대한 너의 생각을 무조건 형식에 맞춰서 말해.`
+                            content: `"${teamName}" 팀에 대한 너의 생각을 무조건 위의 형식에 맞춰서 말해.`
                         }
                     ],
-                    max_tokens: 400
+                    max_tokens: 400,
+                    temperature: 0.3
                 },
                 {
                     headers: {
