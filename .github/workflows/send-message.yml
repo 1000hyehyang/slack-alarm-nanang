@@ -25,3 +25,4 @@ jobs:
           java Bot
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_MESSAGE: ${{ secrets.SLACK_MESSAGE }}
