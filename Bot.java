@@ -4,12 +4,17 @@ import java.net.http.*;
 public class Bot {
     public static void main(String[] args) {
         String webhookUrl = System.getenv("SLACK_WEBHOOK_URL");
+        String slackMessage = System.getenv("SLACK_MESSAGE");
+        
+        if(slackMessage == null || slackMessage.isEmpty()){
+            slackMessage = "기본 메시지입니다.";
+        }
 
         String message = """
         {
-            "text": "나낭이 이모티콘이 출시됐다낭! 귀여운 나낭즈 4종 세트다나낭! 많은 사랑 부탁드린다낭!💕"
+            "text": "%s"
         }
-        """;
+        """.formatted(slackMessage);
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
